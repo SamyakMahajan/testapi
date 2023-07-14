@@ -11,7 +11,7 @@ import matplotlib.pyplot  as plt
 
 
 
-model = YOLO('best.pt')             # location of model pt file
+model = YOLO('yolov8n.yaml')             # location of model pt file
 
 names = model.names
 
