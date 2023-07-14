@@ -1,6 +1,9 @@
 import logging
 import azure.functions as func
 import json
+# from .finalpredict import predict_image #this imports the prediction function
+from .predict import predict_image
+
 """
     what we will do:
     1. give image url from azure storage to the API request
@@ -28,7 +31,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('image_url: %s', image_url)
 
     json_dict={
-        'image_url': image_url
+        'image_url': image_url,
+        'tags' : predict_image(image_url) 
     }
     json_object = json.dumps(json_dict, indent = 4) 
     content_type='application/json'
