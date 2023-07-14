@@ -9,3 +9,6 @@ requests
 Pillow
 urllib3
 joblib
+dill
+matplotlib
+ultralytics

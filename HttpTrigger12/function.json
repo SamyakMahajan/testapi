@@ -1,5 +1,5 @@
 {
-  "scriptFile": "jsoninit.py",
+  "scriptFile": "imptest2.py",
   "bindings": [
     {
       "authLevel": "function",

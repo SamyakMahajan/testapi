@@ -6,6 +6,6 @@ from io import BytesIO
 
 def predict_image(image_url):
     response = requests.get(image_url)
-    img = Image.open(BytesIO(response.content))
-    return img
+    # img = Image.open(BytesIO(response.content))
+    return image_url
 # print(predict_image("https://blog.finxter.com/wp-content/uploads/2022/04/greenland_03a.jpg"))
