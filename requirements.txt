@@ -1,16 +1,1 @@
-# DO NOT include azure-functions-worker in this file
-# The Python Worker is managed by Azure Functions platform
-# Manually managing azure-functions-worker may cause unexpected issues
 azure-functions
-# dill
-# --find-links https://download.pytorch.org/whl/torch_stable.html torch==1.9.0+cpu
-# matplotlib>=3.2.2
-# opencv-python>=4.6.0
-# Pillow>=7.1.2
-# PyYAML>=5.3.1
-# requests>=2.23.0
-# scipy>=1.4.1
-# torch==1.13.1
-# torchvision>=0.8.1
-# tqdm>=4.64.0
-# ultralytics
