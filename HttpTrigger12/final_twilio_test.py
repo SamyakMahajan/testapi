@@ -1,22 +1,18 @@
 import logging
-import azure.functions as func
 import json
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
-    # Parse the request body
-    body = req.get_body().decode('utf-8')
-    parsed_body = dict(param.split('=') for param in body.split('&'))
+    # Parse the request body as JSON
+    req_body = req.get_json()
 
-    # Extract the image URL from the parsed body
-    # image_url = parsed_body.get('MediaUrl0')
+    # Check if the message contains media (image)
+    if 'NumMedia' in req_body and int(req_body['NumMedia']) > 0:
+        # Extract the image URL
+        media_url = req_body['MediaUrl0']
+        # Do something with the image URL, such as storing it or processing it further
+        logging.info(f"Received image URL: {media_url}")
 
-    # Create a JSON response with the image URL
-    response_data = {
-        'image_url': parsed_body
-    }
-    json_response = json.dumps(response_data)
+    return func.HttpResponse("OK", status_code=200)
 
-    # Return the JSON response
-    return func.HttpResponse(body=json_response, status_code=200, mimetype='application/json')
