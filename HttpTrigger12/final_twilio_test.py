@@ -1,6 +1,9 @@
 import logging
 import azure.functions as func
 import json
+import urllib.parse
+# import json
+
 # from .finalpredict import predict_image #this imports the prediction function
 # from .predict import predict_image
 
@@ -37,8 +40,21 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     # }
     # json_object = json.dumps(json_dict, indent = 4) 
     # content_type='application/json'
+   
+# original_string = b'MediaContentType0=image%2Fjpeg&SmsMessageSid=MM34b3ee6de346ba069213c6be8404190e&NumMedia=1&ProfileName=Samyak+Mahajan&SmsSid=MM34b3ee6de346ba069213c6be8404190e&WaId=919013363029&SmsStatus=received&Body=Hu&To=whatsapp%3A%2B14155238886&NumSegments=1&ReferralNumMedia=0&MessageSid=MM34b3ee6de346ba069213c6be8404190e&AccountSid=ACcac64a7fd3d8c588ae857886acb0e122&From=whatsapp%3A%2B919013363029&MediaUrl0=https%3A%2F%2Fapi.twilio.com%2F2010-04-01%2FAccounts%2FACcac64a7fd3d8c588ae857886acb0e122%2FMessages%2FMM34b3ee6de346ba069213c6be8404190e%2FMedia%2FMEdcfc34442a7cdc21a926d06fbfc94b02&ApiVersion=2010-04-01'
+
+# Decode from bytes to string
+    decoded_string = body.decode('utf-8')
+
+# Parse the URL-encoded string
+    parsed_string = urllib.parse.parse_qs(decoded_string)
+
+# Convert the parsed string to a JSON object
+    json_data = json.dumps(parsed_string)
+    content_type='application/json'
     
-    return func.HttpResponse(f"{body}", status_code=200)
+    return func.HttpResponse(body=json_data, status_code=200, mimetype=content_type)
+    # return func.HttpResponse(f"{body}", status_code=200)
     
 
    
