@@ -8,8 +8,10 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
     # Parse the request body as JSON
-    req_body = req.get_body()
+    req_body = req.get_body().decode('utf-8')
     #
+    ##decoded_string = original_string.decode('utf-8')
+
     parsed_string = urllib.parse.parse_qs(req_body)
 
     json_data = dict(parsed_string)
