@@ -1,7 +1,6 @@
 import logging
 import azure.functions as func
 import json
-import urllib.parse
 # import json
 
 # from .finalpredict import predict_image #this imports the prediction function
@@ -60,7 +59,15 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 #     content_type='application/json'
     
     # return func.HttpResponse(body=json_data, status_code=200, mimetype=content_type)
-    return func.HttpResponse(f"{image_url}", status_code=200)
+    logging.info('image_url: %s', image_url)
+
+    json_dict={
+        'image_url': image_url
+    }
+    json_object = json.dumps(json_dict, indent = 4) 
+    content_type='application/json'
+    
+    return func.HttpResponse(body=json_object, status_code=200, mimetype=content_type)
     
 
    
