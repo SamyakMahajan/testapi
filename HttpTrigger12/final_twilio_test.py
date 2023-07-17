@@ -3,6 +3,7 @@ import json
 import azure.functions as func
 # from urllib.parse import parse_qs
 import urllib.parse
+import requests
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
@@ -21,7 +22,13 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     for i in list(json_data):
         final_data[str(i)] = json_data[i]
         # s+=" "
-    # print(s)
+    # print(s)'
+
+    ans={"image_url": final_data["MediaUrl0"][0]}
+    Pred_url = "https://jb-eb-d-functionapp001.azurewebsites.net/api/Predictor?code=3Lj3drbXQVpO3bPSSDyMRX_PNxD5UXir02JYkyO1TA09AzFubN7qMw==&image_url=Hi"
+    json_ans = json.dump(ans)
+    response = requests.post(Pred_url, json=json_ans)
+    
     # k=json_data["SmsMessageSid"]    
     return func.HttpResponse(f"{final_data['MediaUrl0'][0]}", status_code=200)
     
