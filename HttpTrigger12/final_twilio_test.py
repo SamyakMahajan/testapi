@@ -17,7 +17,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     #         media_url = req_body['MediaUrl0']
     #         # Do something with the image URL, such as storing it or processing it further
     #         logging.info(f"Received image URL: {media_url}")
-
+    num_media=parsed_data.get()
     return func.HttpResponse(f"{parse_qs}", status_code=200)
     
     # except:
