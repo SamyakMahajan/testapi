@@ -47,7 +47,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     # decoded_string = body.decode('utf-8')
 
 # Parse the URL-encoded string
-    parsed_string = urllib.parse.parse_qs(body)
+    parsed_string = dict(param.split('=') for param in body.split('&'))
 
 # Convert the parsed string to a JSON object
     json_data = json.dumps(parsed_string)
