@@ -10,11 +10,11 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     parsed_body = dict(param.split('=') for param in body.split('&'))
 
     # Extract the image URL from the parsed body
-    image_url = parsed_body.get('MediaUrl0')
+    # image_url = parsed_body.get('MediaUrl0')
 
     # Create a JSON response with the image URL
     response_data = {
-        'image_url': image_url
+        'image_url': parsed_body
     }
     json_response = json.dumps(response_data)
 
