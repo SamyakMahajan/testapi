@@ -31,10 +31,10 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     #functionname/myconfig.json
     url_string = req.get_body()
     # # Parse the URL-encoded string into a dictionary of parameters
-    # params = dict(param.split('=') for param in url_string.split('&'))
+    params = dict(param.split('=') for param in url_string.split('&'))
 
     # # Retrieve the image URL from the parsed parameters
-    # image_url = params.get('MediaUrl0')
+    image_url = params.get('MediaUrl0')
 
     # image_url=req.params.get('image_url')
     # logging.info('image_url: %s', image_url)
@@ -68,7 +68,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     # content_type='application/json'
     
     # return func.HttpResponse(body=json_object, status_code=200, mimetype=content_type)
-    return func.HttpResponse(f"{url_string}", status_code=200)
+    return func.HttpResponse(f"{image_url}", status_code=200)
     
 
    
