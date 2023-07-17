@@ -16,13 +16,13 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
     json_data = dict(parsed_string)
     # json_data = dict(parsed_string)
-    s=""
-    for i in list(json_data):
-        s+=str(i)
-        s+=" "
+    # s=""
+    # for i in list(json_data):
+    #     s+=str(i)
+    #     s+=" "
     # print(s)
     # k=json_data["SmsMessageSid"]    
-    return func.HttpResponse(f"{s}", status_code=200)
+    return func.HttpResponse(f"{json_data['to']}", status_code=200)
     
     # except:
     #      return func.HttpResponse("Not OK", status_code=400)
