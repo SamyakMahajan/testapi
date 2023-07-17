@@ -31,14 +31,14 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     # image_url=req.params.get('image_url')
     # logging.info('image_url: %s', image_url)
 
-    json_dict={
-        'body': body,
+    # json_dict={
+    #     'body': body,
          
-    }
-    json_object = json.dumps(json_dict, indent = 4) 
-    content_type='application/json'
+    # }
+    # json_object = json.dumps(json_dict, indent = 4) 
+    # content_type='application/json'
     
-    return func.HttpResponse(body=json_object, status_code=200, mimetype=content_type)
+    return func.HttpResponse(f"{body}", status_code=200)
     
 
    
