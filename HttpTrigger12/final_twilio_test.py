@@ -21,7 +21,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     final_data={}
     for i in list(json_data):
         # final_data[str(i)] = json_data[i]
-        s+=" "
+        s+=str(i)
     print(s)
     
     
