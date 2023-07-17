@@ -1,5 +1,5 @@
 {
-  "scriptFile": "finalinit.py",
+  "scriptFile": "twilio_test.py",
   "bindings": [
     {
       "authLevel": "function",
