@@ -16,7 +16,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     #         # Do something with the image URL, such as storing it or processing it further
     #         logging.info(f"Received image URL: {media_url}")
 
-    return func.HttpResponse("OK", status_code=200)
+    return func.HttpResponse(f"{req_body}", status_code=200)
     
     # except:
     #      return func.HttpResponse("Not OK", status_code=400)
