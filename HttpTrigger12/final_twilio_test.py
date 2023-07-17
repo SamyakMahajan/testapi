@@ -1,24 +1,21 @@
 import logging
 import json
 import azure.functions as func
-from urllib.parse import parse_qs
-
+# from urllib.parse import parse_qs
+import urllib.parse
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
     # Parse the request body as JSON
     req_body = req.get_body()
-    parsed_data = parse_qs(req_body)
-    # try:
-    # # Check if the message contains media (image)
-    #     if 'NumMedia' in req_body and int(req_body['NumMedia']) > 0:
-    #         # Extract the image URL
-    #         media_url = req_body['MediaUrl0']
-    #         # Do something with the image URL, such as storing it or processing it further
-    #         logging.info(f"Received image URL: {media_url}")
-    sms_message_sid = parsed_data.get('SmsMessageSid', [''])[0]    
-    return func.HttpResponse(f"{sms_message_sid}", status_code=200)
+    #
+    parsed_string = urllib.parse.parse_qs(req_body)
+
+    json_data = dict(parsed_string)
+
+    k=json_data["SmsMessageSid"]    
+    return func.HttpResponse(f"{k}", status_code=200)
     
     # except:
     #      return func.HttpResponse("Not OK", status_code=400)
