@@ -20,14 +20,14 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     # s=""
     final_data={}
     for i in list(json_data):
-        final_data[str(i)] = json_data[i]
-        # s+=" "
-    # print(s)'
+        # final_data[str(i)] = json_data[i]
+        s+=" "
+    print(s)
     
     
     # k=json_data["SmsMessageSid"]    
-    return func.HttpResponse(f"{final_data['MediaUrl0'][0]}", status_code=200)
-    
+    # return func.HttpResponse(f"{final_data['MediaUrl0'][0]}", status_code=200)
+    return func.HttpResponse(f"{s}", status_code=200)
     # except:
     #      return func.HttpResponse("Not OK", status_code=400)
 
