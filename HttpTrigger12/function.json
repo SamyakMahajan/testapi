@@ -1,5 +1,5 @@
 {
-  "scriptFile": "final_twilio_test.py",
+  "scriptFile": "api_call_init.py",
   "bindings": [
     {
       "authLevel": "function",
