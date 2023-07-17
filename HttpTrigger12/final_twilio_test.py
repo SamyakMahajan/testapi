@@ -22,7 +22,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     for i in list(json_data):
         # final_data[str(i)] = json_data[i]
         s+=str(i)
-    print(s)
+    # print(s)
     
     
     # k=json_data["SmsMessageSid"]    
