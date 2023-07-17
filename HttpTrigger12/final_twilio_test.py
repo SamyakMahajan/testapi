@@ -1,6 +1,7 @@
 import logging
 import json
 import azure.functions as func
+from urllib.parse import parse_qs
 
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -8,6 +9,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
     # Parse the request body as JSON
     req_body = req.get_body()
+    parsed_data = parse_qs(req_body)
     # try:
     # # Check if the message contains media (image)
     #     if 'NumMedia' in req_body and int(req_body['NumMedia']) > 0:
