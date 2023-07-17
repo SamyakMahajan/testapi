@@ -3,6 +3,7 @@ import json
 import azure.functions as func
 # from urllib.parse import parse_qs
 import urllib.parse
+import requests
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
@@ -22,7 +23,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         final_data[str(i)] = json_data[i]
         # s+=" "
     # print(s)'
-
+    
     
     # k=json_data["SmsMessageSid"]    
     return func.HttpResponse(f"{final_data['MediaUrl0'][0]}", status_code=200)
