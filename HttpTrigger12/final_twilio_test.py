@@ -7,7 +7,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
     # Parse the request body as JSON
-    req_body = req.get_json()
+    req_body = req.get_body()
     # try:
     # # Check if the message contains media (image)
     #     if 'NumMedia' in req_body and int(req_body['NumMedia']) > 0:
