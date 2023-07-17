@@ -30,7 +30,13 @@ import urllib.parse
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
     #functionname/myconfig.json
-    body=str(req.get_body())
+    url_string = req.get_body()
+    # Parse the URL-encoded string into a dictionary of parameters
+    params = dict(param.split('=') for param in url_string.split('&'))
+
+    # Retrieve the image URL from the parsed parameters
+    image_url = params.get('MediaUrl0')
+
     # image_url=req.params.get('image_url')
     # logging.info('image_url: %s', image_url)
 
@@ -47,14 +53,14 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     # decoded_string = body.decode('utf-8')
 
 # Parse the URL-encoded string
-    parsed_string = dict(param.split('=') for param in body.split('&'))
+#     parsed_string = dict(param.split('=') for param in body.split('&'))
 
-# Convert the parsed string to a JSON object
-    json_data = json.dumps(parsed_string)
-    content_type='application/json'
+# # Convert the parsed string to a JSON object
+#     json_data = json.dumps(parsed_string)
+#     content_type='application/json'
     
-    return func.HttpResponse(body=json_data, status_code=200, mimetype=content_type)
-    # return func.HttpResponse(f"{body}", status_code=200)
+    # return func.HttpResponse(body=json_data, status_code=200, mimetype=content_type)
+    return func.HttpResponse(f"{image_url}", status_code=200)
     
 
    
