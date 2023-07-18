@@ -17,7 +17,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 #runni
 
-    req_body = req.get_body().decode('utf-8')+"nooo"
+    req_body = req.get_body()
 
 
 
