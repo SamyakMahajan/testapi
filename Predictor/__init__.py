@@ -1,25 +1,54 @@
+import azure.functions as func
+
 import logging
 
-import azure.functions as func
 import json
 
-def main(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request.')
-    req_body = dict(req.get_json())
-    # req_data = json.loads(req_body)
-    name = req_body['name']
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
+import urllib.parse
 
-    if name:
-        return func.HttpResponse(f"Hello,The image url is {name}. This HTTP triggered function executed successfully.")
-    else:
-        return func.HttpResponse(
-             "This HTTP triggered function executed successfully. Pass an image url in the query string or in the request body for a personalized response.",
-             status_code=200
-        )
+import requests
+
+
+
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+
+   
+
+#runni
+
+    req_body = req.get_body().decode('utf-8')+"nooo"
+
+
+
+
+
+   
+
+    # parsed_string = urllib.parse.parse_qs(req_body)
+
+   
+
+    # json_data = dict(parsed_string)
+
+
+
+
+    # final_data={}
+
+    # for i in list(json_data):
+
+    #     final_data[str(i)] = json_data[i]
+
+   
+
+    # return func.HttpResponse(f"{final_data['MediaUrl0'][0]}", status_code=200)
+
+   
+
+
+
+
+
+
+    return func.HttpResponse(f"{req_body}", status_code=200)
