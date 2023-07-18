@@ -42,7 +42,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         headers = {'Content-type': 'application/json'}
         response = requests.post(url, data=json_object, headers=headers)
         response=response.content.decode('utf-8')
-
+        logging.info(type(response))
         return func.HttpResponse(f"{final_data['MediaUrl0'][0]} : {type(media_url)}", status_code=200)
     
     # except:
