@@ -36,6 +36,13 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     # response=response.content.decode('utf-8')
     else:
         media_url=final_data['MediaUrl0'][0]
+        k={"name":str(media_url)}
+        url="https://jb-eb-d-functionapp001.azurewebsites.net/api/Predictor?code=3Lj3drbXQVpO3bPSSDyMRX_PNxD5UXir02JYkyO1TA09AzFubN7qMw=="
+        json_object = json.dumps(k)
+        headers = {'Content-type': 'application/json'}
+        response = requests.post(url, data=json_object, headers=headers)
+        response=response.content.decode('utf-8')
+
         return func.HttpResponse(f"{final_data['MediaUrl0'][0]} : {type(media_url)}", status_code=200)
     
     # except:
