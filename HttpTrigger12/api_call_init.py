@@ -25,7 +25,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     if(int(final_data['NumMedia'][0])==0):
         return func.HttpResponse(f"Please upload a picture", status_code=200)
     # print(s)'
-    # a=requests.get("https://jb-eb-d-functionapp001.azurewebsites.net/api/Predictor?code=3Lj3drbXQVpO3bPSSDyMRX_PNxD5UXir02JYkyO1TA09AzFubN7qMw==")
+    # a=requests.post("https://jb-eb-d-functionapp001.azurewebsites.net/api/Predictor?code=3Lj3drbXQVpO3bPSSDyMRX_PNxD5UXir02JYkyO1TA09AzFubN7qMw==")
     # a=a.content.decode('utf-8')
     # k=json_data["SmsMessageSid"]    
     # k={"name":str(final_data['MediaUrl0'])}
@@ -35,7 +35,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     # response = requests.post(url, data=json_object, headers=headers)
     # response=response.content.decode('utf-8')
     else:
-        return func.HttpResponse(f"{final_data['MediaUrl0'][0]}", status_code=200)
+        media_url=final_data['MediaUrl0'][0]
+        return func.HttpResponse(f"{final_data['MediaUrl0'][0]} : {type(media_url)}", status_code=200)
     
     # except:
     #      return func.HttpResponse("Not OK", status_code=400)
