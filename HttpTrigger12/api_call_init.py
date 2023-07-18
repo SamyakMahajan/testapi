@@ -22,19 +22,11 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     for i in list(json_data):
         final_data[str(i)] = json_data[i]
         # s+=" "
-    # print(s)
-    # k=json_data["SmsMessageSid"]
-    # k={"name":final_data['MediaUrl0'][0]}
-    # url="https://jb-eb-d-functionapp001.azurewebsites.net/api/Predictor?code=3Lj3drbXQVpO3bPSSDyMRX_PNxD5UXir02JYkyO1TA09AzFubN7qMw=="
-    # json_object = json.dumps(k)
-    # headers = {'Content-type': 'application/json'}
-    # response = requests.post(url, data=json_object, headers=headers)
-
-    a=requests.get("https://jb-eb-d-functionapp001.azurewebsites.net/api/Predictor?code=3Lj3drbXQVpO3bPSSDyMRX_PNxD5UXir02JYkyO1TA09AzFubN7qMw==&image_url=Hi",json=json_object)
-    a=a.content.decode('utf-8') 
-     
-        
-    return func.HttpResponse(f"{str(a)}", status_code=200)
+    # print(s)'
+    a=requests.get("https://jb-eb-d-functionapp001.azurewebsites.net/api/Predictor?code=3Lj3drbXQVpO3bPSSDyMRX_PNxD5UXir02JYkyO1TA09AzFubN7qMw==&image_url=Hi")
+    a=a.content.decode('utf-8')
+    # k=json_data["SmsMessageSid"]    
+    return func.HttpResponse(f"{a}", status_code=200)
     
     # except:
     #      return func.HttpResponse("Not OK", status_code=400)
