@@ -26,13 +26,13 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     # a=requests.get("https://jb-eb-d-functionapp001.azurewebsites.net/api/Predictor?code=3Lj3drbXQVpO3bPSSDyMRX_PNxD5UXir02JYkyO1TA09AzFubN7qMw==")
     # a=a.content.decode('utf-8')
     # k=json_data["SmsMessageSid"]    
-    k={"name":str(final_data['MediaUrl0'])}
-    url="https://jb-eb-d-functionapp001.azurewebsites.net/api/Predictor?code=3Lj3drbXQVpO3bPSSDyMRX_PNxD5UXir02JYkyO1TA09AzFubN7qMw=="
-    json_object = json.dumps(k, indent = 4)
-    headers = {'Content-type': 'application/json'}
-    response = requests.post(url, data=json_object, headers=headers)
-    response=response.content.decode('utf-8')
-    return func.HttpResponse(f"{response}", status_code=200)
+    # k={"name":str(final_data['MediaUrl0'])}
+    # url="https://jb-eb-d-functionapp001.azurewebsites.net/api/Predictor?code=3Lj3drbXQVpO3bPSSDyMRX_PNxD5UXir02JYkyO1TA09AzFubN7qMw=="
+    # json_object = json.dumps(k, indent = 4)
+    # headers = {'Content-type': 'application/json'}
+    # response = requests.post(url, data=json_object, headers=headers)
+    # response=response.content.decode('utf-8')
+    return func.HttpResponse(f"{final_data['MediaUrl0'][0]}", status_code=200)
     
     # except:
     #      return func.HttpResponse("Not OK", status_code=400)
