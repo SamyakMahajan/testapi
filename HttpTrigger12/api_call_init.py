@@ -26,7 +26,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     # a=requests.get("https://jb-eb-d-functionapp001.azurewebsites.net/api/Predictor?code=3Lj3drbXQVpO3bPSSDyMRX_PNxD5UXir02JYkyO1TA09AzFubN7qMw==")
     # a=a.content.decode('utf-8')
     # k=json_data["SmsMessageSid"]    
-    k={"name":"hi"}
+    k={"name":str(final_data['MediaUrl0'][0])}
     url="https://jb-eb-d-functionapp001.azurewebsites.net/api/Predictor?code=3Lj3drbXQVpO3bPSSDyMRX_PNxD5UXir02JYkyO1TA09AzFubN7qMw=="
     json_object = json.dumps(k, indent = 4)
     headers = {'Content-type': 'application/json'}
