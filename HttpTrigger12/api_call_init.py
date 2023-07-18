@@ -36,7 +36,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     # response=response.content.decode('utf-8')
     else:
         media_url=final_data['MediaUrl0'][0]
-        k={"name":str(media_url)}
+        k={"name":"hi"}
         url="https://jb-eb-d-functionapp001.azurewebsites.net/api/Predictor?code=3Lj3drbXQVpO3bPSSDyMRX_PNxD5UXir02JYkyO1TA09AzFubN7qMw=="
         json_object = json.dumps(k)
         headers = {'Content-type': 'application/json'}
