@@ -43,7 +43,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         response = requests.post(url, data=json_object, headers=headers)
         response=response.content.decode('utf-8')
         logging.info(type(response))
-        return func.HttpResponse(f"{response} {final_data['MediaUrl0'][0]} : {type(media_url)}", status_code=200)
+        return func.HttpResponse(f"Hi the response is {response}", status_code=200)
     
     # except:
     #      return func.HttpResponse("Not OK", status_code=400)
