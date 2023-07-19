@@ -3,7 +3,7 @@ import logging
 import json
 import urllib.parse
 import requests
-
+from .predict import predict_image
 import datetime
 import os
 import azure.functions as func
@@ -105,6 +105,16 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     # return func.HttpResponse(f"{final_data['MediaUrl0'][0]}", status_code=200)
     
 
+    image_url=url
+    logging.info('image_url: %s', image_url)
 
+    json_dict={
+        'image_url': image_url,
+        'tags' : predict_image(image_url) 
+    }
+    json_object = json.dumps(json_dict, indent = 4) 
+    content_type='application/json'
+    
+    return func.HttpResponse(body=json_object, status_code=200, mimetype=content_type)
 
-    return func.HttpResponse(f"{url} is ", status_code=200)
+    # return func.HttpResponse(f"{url}", status_code=200)
