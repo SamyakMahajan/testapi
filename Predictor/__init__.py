@@ -15,4 +15,5 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     final_data={}
     for i in list(json_data):
         final_data[str(i)] = json_data[i]
-    return func.HttpResponse(f"{req_body}", status_code=200)
+    final=final_data['name']
+    return func.HttpResponse(f"{final}", status_code=200)
