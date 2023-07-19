@@ -11,9 +11,10 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
     json_data = dict(parsed_string)
     # json_data = dict(parsed_string)
-    # s=""
+    s=""
     final_data={}
     for i in list(json_data):
         final_data[str(i)] = json_data[i]
-    final=final_data['name']
-    return func.HttpResponse(f"{final}", status_code=200)
+        s+=str(i)
+    # final=final_data['name']
+    return func.HttpResponse(f"{s}", status_code=200)
