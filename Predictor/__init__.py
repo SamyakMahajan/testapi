@@ -1,18 +1,21 @@
 import logging
-import json
 import azure.functions as func
-import urllib.parse
-
+import json
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
-    req_body = req.get_body().decode('utf-8')
-    parsed_string = urllib.parse.parse_qs(req_body)
 
-    json_data = dict(parsed_string)
-    # json_data = dict(parsed_string)
-    # s=""
-    final_data={}
-    for i in list(json_data):
-        final_data[str(i)] = json_data[i]
-    return func.HttpResponse(f"{type(req_body)}", status_code=200)
+    try:
+        req_body = req.get_json()
+        # Assuming the JSON request contains a 'message' field
+        message = req_body.get('name')
+
+        # Process the message
+        # processed_message = process_message(message)
+
+        response = {'result': message}
+        return func.HttpResponse(json.dumps(response), mimetype='application/json')
+    
+    except ValueError as e:
+        logging.error(e)
+        return func.HttpResponse('Invalid JSON', status_code=400)
