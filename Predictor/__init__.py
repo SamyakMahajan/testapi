@@ -9,4 +9,4 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     for key, value in req_body.items():
         final_data[key] = value
 
-    return func.HttpResponse(json.dumps(final_data), mimetype='application/json')
+    return func.HttpResponse(json.dumps(final_data["name"]), mimetype='application/json')
