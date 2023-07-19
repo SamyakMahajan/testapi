@@ -1,7 +1,7 @@
 azure-functions
 # ultralytics
 requests
-urllib3
+
 twilio
 Flask
 azure-cosmos
