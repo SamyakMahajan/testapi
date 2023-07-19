@@ -107,4 +107,4 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 
 
-    return func.HttpResponse(f"{url}", status_code=200)
+    return func.HttpResponse(f"{url} is ", status_code=200)
