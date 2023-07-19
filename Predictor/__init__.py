@@ -53,9 +53,15 @@ import azure.functions as func
 def main(req: func.HttpRequest) -> func.HttpResponse:
     
 #runni
+    # req_body = req.get_body().decode('utf-8')
     req_body = req.get_body().decode('utf-8')
-    j=json.loads(req_body)
-    name=j['name']
+
+
+
+
+    req_json=json.loads(req_body)
+
+    url=req_json['name']
     # req_json=json.loads(req_body)
     # url=req_json['name']
 
@@ -101,4 +107,4 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 
 
-    return func.HttpResponse(f"{req_body}", status_code=200)
+    return func.HttpResponse(f"{url}", status_code=200)
